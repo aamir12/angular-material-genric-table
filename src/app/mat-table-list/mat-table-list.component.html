@@ -1,0 +1,111 @@
+<div [ngClass]="containerClasses">
+  <div
+    class="mat-table-container"
+    [ngClass]="tableContainerClasses"
+    [id]="tableContainerId"
+  >
+    <table
+      #table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      [matSortActive]="sortActive"
+      [matSortDirection]="sortDirection"
+    >
+      <ng-container matColumnDef="action" *ngIf="!!actionBtns">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          disabled="true"
+          [ngStyle]="actionBtns.headerStyle ? actionBtns.headerStyle : {}"
+          [ngClass]="
+            actionBtns.headerClasses ? actionBtns.headerClasses.join(' ') : []
+          "
+        >
+          Action
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [ngStyle]="actionBtns.dataStyle ? actionBtns.dataStyle : {}"
+          [ngClass]="
+            actionBtns.dataClasses ? actionBtns.dataClasses.join(' ') : []
+          "
+        >
+          <button
+            (click)="onOptionClick($event)"
+            [matMenuTriggerFor]="menu"
+            class="action-btn"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu
+            #menu="matMenu"
+            class="mat-table-actions-menu"
+            xPosition="after"
+          >
+            <ng-container *ngFor="let action of actionBtns.buttons">
+              <button
+                mat-menu-item
+                *ngIf="action.access ? action.access(row) : true"
+                (click)="action.onClick(row)"
+              >
+                <!-- <mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon> -->
+                <span>{{ action.name }}</span>
+              </button>
+            </ng-container>
+          </mat-menu>
+        </td>
+      </ng-container>
+      <ng-container [matColumnDef]="col.name" *ngFor="let col of columns">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          [disabled]="col.disableSorting"
+          [ngStyle]="col.headerStyle ? col.headerStyle : {}"
+          [ngClass]="col.headerClasses ? col.headerClasses.join(' ') : []"
+        >
+          {{ col.displayName }}
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let row"
+          [ngStyle]="col.dataStyle ? col.dataStyle : {}"
+          [ngClass]="col.dataClasses ? col.dataClasses.join(' ') : []"
+        >
+          {{ col.transForm ? col.transForm(row[col.name]) : row[col.name] }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="onRowClick(row)"
+        [class.cursor-pointer]="rowClickListner"
+        [class.cursor-default]="!rowClickListner"
+      ></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td
+          class="mat-cell text-center"
+          [attr.colspan]="displayedColumns.length"
+        >
+          No data found
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <mat-paginator
+    #paginator
+    [class.d-none]="dataSource && !dataSource.filteredData.length"
+    [length]="data.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="limitSizes"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

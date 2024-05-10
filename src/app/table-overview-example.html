@@ -1,0 +1,67 @@
+<mat-form-field appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input
+    matInput
+    [(ngModel)]="textSearch"
+    (input)="applyFilter()"
+    placeholder="Search Here"
+  />
+
+  <button
+    *ngIf="textSearch"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="clearFilter()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<div
+  class="d-flex justify-content-between align-items-center flex-md-row flex-sm-column flex-column gap-3"
+>
+  <div class="text-center text-md-start">
+    <p>Project Type</p>
+    <mat-button-toggle-group
+      [(ngModel)]="project_type"
+      (change)="onProjectTypeChange()"
+      aria-label="Font Style"
+    >
+      <mat-button-toggle value="MY">My</mat-button-toggle>
+      <mat-button-toggle value="TEAM">Team</mat-button-toggle>
+      <mat-button-toggle value="ALL">All</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="text-center text-md-start">
+    <p>Status</p>
+
+    <mat-button-toggle-group
+      [(ngModel)]="status_type"
+      (change)="onStatusChange()"
+      aria-label="Font Style"
+    >
+      <mat-button-toggle value="1">Active</mat-button-toggle>
+      <mat-button-toggle value="2">Inactive</mat-button-toggle>
+      <mat-button-toggle value="3">Both</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+
+<app-mat-table-list
+  class="black-header"
+  [data]="data"
+  [filterValue]="filterValue"
+  [columns]="columns"
+  [filterFn]="inputFilterFn"
+  [sortFn]="inputSortFn"
+  [rowClickListner]="onRowClick"
+  [actionBtns]="actionBtns"
+  [pageSize]="10"
+  [limitSizes]="[5,10,50]"
+  [containerClasses]="['py-5']"
+  [tableContainerClasses]="['pt-2']"
+  [sortActive]="'creationDate'"
+  [sortDirection]="'desc'"
+></app-mat-table-list>
