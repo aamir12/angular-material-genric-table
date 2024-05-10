@@ -75,3 +75,5 @@ function createNewUser(id: number): IUserData {
       randomDates[Math.round(Math.random() * (randomDates.length - 1))],
   };
 }
+
+

@@ -3,8 +3,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableListComponent } from './mat-table-list.component';
 import { WindowProvider } from '../window.service';
-import { MaterialExampleModule } from 'src/material.module';
+
 import { CommonModule } from '@angular/common';
+import { IconsModule } from '../shared/icons.module';
+import { MaterialExampleModule } from '../shared/material.module';
 
 @NgModule({
   declarations: [MatTableListComponent],
@@ -14,6 +16,7 @@ import { CommonModule } from '@angular/common';
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
+    IconsModule
   ],
   providers: [WindowProvider],
   exports: [MatTableListComponent],
