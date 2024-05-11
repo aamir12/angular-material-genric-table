@@ -19,7 +19,7 @@
           disabled="true"
           [ngStyle]="actionBtns.headerStyle ? actionBtns.headerStyle : {}"
           [ngClass]="
-            actionBtns.headerClasses ? actionBtns.headerClasses.join(' ') : []
+            actionBtns.headerClasses ? actionBtns.headerClasses : []
           "
         >
           Action
@@ -29,7 +29,7 @@
           *matCellDef="let row"
           [ngStyle]="actionBtns.dataStyle ? actionBtns.dataStyle : {}"
           [ngClass]="
-            actionBtns.dataClasses ? actionBtns.dataClasses.join(' ') : []
+            actionBtns.dataClasses ? actionBtns.dataClasses : []
           "
         >
           <button
@@ -65,7 +65,7 @@
           mat-sort-header
           [disabled]="col.disableSorting"
           [ngStyle]="col.headerStyle ? col.headerStyle : {}"
-          [ngClass]="col.headerClasses ? col.headerClasses.join(' ') : []"
+          [ngClass]="col.headerClasses ? col.headerClasses : []"
         >
           {{ col.displayName }}
         </th>
@@ -73,7 +73,7 @@
           mat-cell
           *matCellDef="let row"
           [ngStyle]="col.dataStyle ? col.dataStyle : {}"
-          [ngClass]="col.dataClasses ? col.dataClasses.join(' ') : []"
+          [ngClass]="col.dataClasses ? col.dataClasses : []"
         >
           {{ col.transForm ? col.transForm(row[col.name]) : row[col.name] }}
         </td>

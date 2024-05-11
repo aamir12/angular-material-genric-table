@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { IActionBtnConfiguration, IColumn, IUserData } from './model';
+import { IActionBtnConfiguration, IColumn, IUserData, NonArrayObject, SearchObject } from './model';
 import { createNewUser } from './data';
 import { CurrencyPipe } from '@angular/common';
 import { AP3DatePipe } from './pipes/ap3date.pipe';
 import moment from 'moment';
-import { dateCompare, numberCompare, stringCompare } from './utility/common.fn';
+import { dateCompare, numberCompare, stringCompare, textSearchFN } from './utility/common.fn';
 
 @Component({
   selector: 'table-overview-example',
@@ -200,6 +200,13 @@ export class TableOverviewExample implements OnInit {
     });
   };
 
+  
+
+  //testing
+  // checkStatus(status:number, selectedStatus:number) {
+  //   return status === selectedStatus;
+  // } 
+
   filterFN = (row: IUserData, filter: string): boolean => {
     const filterOption = JSON.parse(filter);
     const { status, textSearch } = filterOption;
@@ -210,15 +217,9 @@ export class TableOverviewExample implements OnInit {
       return true;
     }
 
-    const matchesStatus = isBothSelect || +row.status === +status;
+    const matchesStatus = isBothSelect ||  +row.status === +status;
     const matchesTextSearch =
-      !isTextSearch ||
-      row.id.toString().includes(textSearch.toLowerCase()) ||
-      row.name.toLowerCase().includes(textSearch.toLowerCase()) ||
-      row.fruit.toLowerCase().includes(textSearch.toLowerCase()) ||
-      row.price.toString().includes(textSearch.toLowerCase()) ||
-      row.creationDate.toLowerCase().includes(textSearch.toLowerCase());
-
+      !isTextSearch || textSearchFN(row,['id','name','fruit','price','creationDate'],textSearch);
     return matchesStatus && matchesTextSearch;
   };
 

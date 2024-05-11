@@ -40,3 +40,9 @@ export interface IActionBtnConfiguration<T> {
   classes?: string[];
   buttons: IActionBtn<T>[];
 }
+
+export interface SearchObject {
+  [key:string]:unknown
+}
+
+export type NonArrayObject = object & { length?: never };

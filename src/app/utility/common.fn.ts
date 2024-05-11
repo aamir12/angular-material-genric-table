@@ -45,3 +45,14 @@ export function uniqueId(parts = 4): string {
   }
   return stringArr.join('-');
 }
+
+export function textSearchFN<T extends { [key: string]: any }>(source: T, keys: Partial<(keyof T)>[], textSearch: string) {
+  let isMatch = false;
+  for (let key of keys) {
+    if (source[key] && source[key].toString().toLowerCase().includes(textSearch.toLowerCase())) {
+      isMatch = true;
+      break;
+    }
+  }
+  return isMatch;
+}
