@@ -15,6 +15,7 @@ import { IActionBtnConfiguration, IColumn } from '../model';
 import { PageEvent } from '@angular/material/paginator';
 import { uniqueId } from '../utility/common.fn';
 import { DOCUMENT } from '@angular/common';
+import { WINDOW } from '../window.service';
 
 @Component({
   selector: 'lib-mat-table-list',
@@ -44,7 +45,10 @@ export class LibMatTableListComponent<T> implements OnInit {
   displayedColumns: string[] = [];
   tableContainerId = uniqueId();
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(WINDOW) private window: Window,
+    ) {}
   ngOnInit() {
     this.setUpcolumnsSetting();
     this.setUpByData();
@@ -132,7 +136,7 @@ export class LibMatTableListComponent<T> implements OnInit {
   onPageChange(event: PageEvent) {
     const tableContainer = this.document.getElementById(this.tableContainerId);
 
-    window.scrollTo(0, (tableContainer as HTMLElement).offsetTop - 30);
+    this.window.scrollTo(0, (tableContainer as HTMLElement).offsetTop - 30);
     //(tableContainer as HTMLElement).scrollIntoView();
 
  
