@@ -18,8 +18,8 @@ import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'lib-mat-table-list',
-  templateUrl: './mat-table-list.component.html',
-  styleUrls: ['./mat-table-list.component.scss'],
+  templateUrl: './lib-mat-table-list.component.html',
+  styleUrls: ['./lib-mat-table-list.component.scss'],
 })
 export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
   @Input() data: T[] = [];

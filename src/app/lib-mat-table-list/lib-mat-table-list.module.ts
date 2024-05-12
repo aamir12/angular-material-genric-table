@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { LibMatTableListComponent } from './mat-table-list.component';
+import { LibMatTableListComponent } from './lib-mat-table-list.component';
 import { WindowProvider } from '../window.service';
 
 import { CommonModule } from '@angular/common';

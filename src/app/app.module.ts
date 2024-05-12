@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WindowProvider } from './window.service';
-import { LibMatTableListModule } from './mat-table-list/mat-table-list.module';
+import { LibMatTableListModule } from './lib-mat-table-list/lib-mat-table-list.module';
 import { CurrencyPipe } from '@angular/common';
 import { AP3DatePipe } from './pipes/ap3date.pipe';
 import { MaterialModule } from './shared/material.module';
