@@ -135,7 +135,7 @@ export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
     (tableContainer as HTMLElement).scrollIntoView();
   }
 
-  isActionSticky(position:'start'|'end') {
-    return !!this.actionBtns && this.actionBtns.positions ===position && this.actionBtns.sticky;
+  isActionSticky(position:'start'|'end'):boolean {
+    return  this.dataSource?.filteredData.length > 0 && this.actionBtns?.positions === position && !!this.actionBtns?.sticky;
   }
 }
