@@ -1,24 +1,19 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatTableListComponent } from './mat-table-list.component';
+import { LibMatTableListComponent } from './mat-table-list.component';
 import { WindowProvider } from '../window.service';
 
 import { CommonModule } from '@angular/common';
 import { IconsModule } from '../shared/icons.module';
-import { MaterialExampleModule } from '../shared/material.module';
+import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
-  declarations: [MatTableListComponent],
+  declarations: [LibMatTableListComponent],
   imports: [
     CommonModule,
-    FormsModule,
-    MatNativeDateModule,
-    MaterialExampleModule,
-    ReactiveFormsModule,
+    MaterialModule,
     IconsModule
   ],
   providers: [WindowProvider],
-  exports: [MatTableListComponent],
+  exports: [LibMatTableListComponent],
 })
-export class MatTableListModule {}
+export class LibMatTableListModule {}

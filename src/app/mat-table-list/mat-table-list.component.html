@@ -1,6 +1,6 @@
 <div [ngClass]="containerClasses">
   <div
-    class="mat-table-container"
+    class="lib-mat mat-table-container"
     [ngClass]="tableContainerClasses"
     [id]="tableContainerId"
   >
@@ -42,7 +42,7 @@
           </button>
           <mat-menu
             #menu="matMenu"
-            class="mat-table-actions-menu"
+            class="lib-mat-actions-menu"
             xPosition="after"
           >
             <ng-container *ngFor="let action of actionBtns.buttons">
@@ -84,8 +84,8 @@
         mat-row
         *matRowDef="let row; columns: displayedColumns"
         (click)="onRowClick(row)"
-        [class.cursor-pointer]="rowClickListner"
-        [class.cursor-default]="!rowClickListner"
+        [class.lib-mat-cursor-pointer]="rowClickListner"
+        [class.lib-mat-cursor-default]="!rowClickListner"
       ></tr>
 
       <tr class="mat-row" *matNoDataRow>

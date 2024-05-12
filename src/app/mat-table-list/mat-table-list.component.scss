@@ -1,6 +1,3 @@
-.my-5 {
-  margin: 50px auto;
-}
 
 .mat-table-container {
   overflow-x: auto;
@@ -23,27 +20,20 @@
   padding: 5px;
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.cursor-default {
-  cursor: default;
-}
 
 .mat-menu-item {
   min-width: 180px;
 }
 
-:host-context(.black-header) .mat-header-cell {
+:host-context(.lib-mat-black-header) .mat-header-cell {
   background: #666;
   color: #fff;
 }
 
-:host-context(.black-header) .mat-header-cell:first-child {
+:host-context(.lib-mat-black-header) .mat-header-cell:first-child {
   border-top-left-radius: 5px;
 }
 
-:host-context(.black-header) .mat-header-cell:last-child {
+:host-context(.lib-mat-black-header) .mat-header-cell:last-child {
   border-top-right-radius: 5px;
 }

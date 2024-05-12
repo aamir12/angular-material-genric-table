@@ -17,11 +17,11 @@ import { uniqueId } from '../utility/common.fn';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-mat-table-list',
+  selector: 'lib-mat-table-list',
   templateUrl: './mat-table-list.component.html',
   styleUrls: ['./mat-table-list.component.scss'],
 })
-export class MatTableListComponent<T> implements OnInit, AfterViewInit {
+export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
   @Input() data: T[] = [];
   @Input() filterValue: string;
   @Input() containerClasses: string[] = [];

@@ -1,16 +1,16 @@
-table {
+/* table {
   width: 100%;
-}
+} */
 
 .mat-form-field {
   font-size: 14px;
   width: 100%;
 }
 
-td,
+/* td,
 th {
   width: 25%;
-}
+} */
 
 .d-none {
   display: none;

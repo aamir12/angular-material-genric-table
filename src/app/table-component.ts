@@ -8,11 +8,11 @@ import moment from 'moment';
 import { dateCompare, numberCompare, stringCompare, textSearchFN } from './utility/common.fn';
 
 @Component({
-  selector: 'table-overview-example',
-  styleUrls: ['table-overview-example.css'],
-  templateUrl: 'table-overview-example.html',
+  selector: 'app-table',
+  styleUrls: ['table-component.css'],
+  templateUrl: 'table-component.html',
 })
-export class TableOverviewExample implements OnInit {
+export class TableComponent implements OnInit {
   data: IUserData[] = [];
   textSearch = '';
   project_type = 'ALL';
@@ -27,9 +27,8 @@ export class TableOverviewExample implements OnInit {
   columns: IColumn[] = [
     {
       name: 'id',
-      disableSorting: false,
-      displayName: 'ID',
-      headerStyle: { width: '10%' },
+      disableSorting: true,
+      displayName: 'Project ID',
       headerClasses: ['text-center'],
       dataClasses: ['text-center'],
     },
@@ -103,12 +102,12 @@ export class TableOverviewExample implements OnInit {
   //to check access of variables;
   testVar: string = 'test variables';
 
-  info(title: string, data: IUserData[]) {
-    console.log(title);
-    console.log(data.length);
-    console.log('Active', data.filter((d) => d.status === 1).length);
-    console.log('Inactive', data.filter((d) => d.status === 2).length);
-  }
+  // info(title: string, data: IUserData[]) {
+  //   console.log(title);
+  //   console.log(data.length);
+  //   console.log('Active', data.filter((d) => d.status === 1).length);
+  //   console.log('Inactive', data.filter((d) => d.status === 2).length);
+  // }
 
   constructor(
     private currencyPipe: CurrencyPipe,
@@ -123,15 +122,14 @@ export class TableOverviewExample implements OnInit {
 
     this.allProject = users.map((x) => {
       x.creationDate = this.ap3DatePipe.transform(x.creationDate, 'll');
-
       return x;
     });
     this.myProject = this.allProject.filter((x) => x.project_type === 'MY');
     this.teamProject = this.allProject.filter((x) => x.project_type === 'TEAM');
 
-    this.info('ALL', this.allProject);
-    this.info('MY', this.myProject);
-    this.info('TEAM', this.teamProject);
+    // this.info('ALL', this.allProject);
+    // this.info('MY', this.myProject);
+    // this.info('TEAM', this.teamProject);
 
     setTimeout(() => {
       this.onProjectTypeChange();

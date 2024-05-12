@@ -23,7 +23,7 @@
 
 ```http
 <app-mat-table-list
-  class="black-header"
+  class="lib-mat-black-header"
   [data]="data"
   [filterValue]="filterValue"
   [columns]="columns"
