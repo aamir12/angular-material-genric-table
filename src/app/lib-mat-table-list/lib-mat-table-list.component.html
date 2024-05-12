@@ -36,6 +36,7 @@
             (click)="onOptionClick($event)"
             [matMenuTriggerFor]="menu"
             class="action-btn"
+            type="button"
           >
             <!-- <mat-icon>more_vert</mat-icon> -->
             <fa-icon class="pointer" [icon]="['fas', 'ellipsis-v']"></fa-icon>
@@ -101,6 +102,7 @@
 
   <mat-paginator
     #paginator
+    [ngClass]="paginationClasses"
     [class.d-none]="dataSource && !dataSource.filteredData.length"
     [length]="data.length"
     [pageSize]="pageSize"

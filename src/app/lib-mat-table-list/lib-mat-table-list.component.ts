@@ -26,6 +26,7 @@ export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
   @Input() filterValue: string;
   @Input() containerClasses: string[] = [];
   @Input() tableContainerClasses: string[] = [];
+  @Input() paginationClasses: string[] = [];
   @Input() pageSize: number = 10;
   @Input() limitSizes: number[] = [5, 10, 25, 50, 100];
   @Input() columns: IColumn[] = [];
