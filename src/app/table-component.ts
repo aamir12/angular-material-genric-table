@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { IActionBtnConfiguration, IColumn, IUserData, NonArrayObject, SearchObject } from './model';
+import { IActionBtnConfiguration, IColumn, IUserData } from './model';
 import { createNewUser } from './data';
 import { CurrencyPipe } from '@angular/common';
 import { AP3DatePipe } from './pipes/ap3date.pipe';
-import moment from 'moment';
 import { dateCompare, numberCompare, stringCompare, textSearchFN } from './utility/common.fn';
 
 @Component({

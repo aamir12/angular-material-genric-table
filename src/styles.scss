@@ -21,11 +21,11 @@ body {
   color: #fff !important;
 }
 
-.lib-mat mat-sort-header-container {
+.lib-mat .mat-sort-header-container {
   justify-content: center !important;
 }
 
-.lib-mat .mat-sort-header-disabled .mat-sort-header-arrow {
+.lin-mat .mat-sort-header-disabled .mat-sort-header-arrow {
   display: none !important;
 }
 
@@ -58,4 +58,8 @@ body {
 .lib-mat-actions-menu .mat-menu-item-highlighted:not([disabled]),
 .lib-mat-actions-menu .mat-menu-item:hover {
   background: transparent;
+}
+
+.lib-mat th.mat-table-sticky {
+  border: none !important;
 }
