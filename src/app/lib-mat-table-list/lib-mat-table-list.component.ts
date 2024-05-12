@@ -131,7 +131,11 @@ export class LibMatTableListComponent<T> implements OnInit {
 
   onPageChange(event: PageEvent) {
     const tableContainer = this.document.getElementById(this.tableContainerId);
-    (tableContainer as HTMLElement).scrollIntoView();
+
+    window.scrollTo(0, (tableContainer as HTMLElement).offsetTop - 30);
+    //(tableContainer as HTMLElement).scrollIntoView();
+
+ 
   }
 
   isActionSticky(position:'start'|'end'):boolean {
