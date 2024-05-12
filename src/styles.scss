@@ -9,57 +9,57 @@ body {
   height: 100%;
 }
 
-.lib-mat-cursor-pointer {
+.lib-mat-table-cursor-pointer {
   cursor: pointer;
 }
 
-.lib-mat-cursor-default {
+.lib-mat-table-cursor-default {
   cursor: default;
 }
 
-.lib-mat-black-header .mat-sort-header-sorted .mat-sort-header-arrow {
+.lib-mat-table-black-header .mat-sort-header-sorted .mat-sort-header-arrow {
   color: #fff !important;
 }
 
-.lib-mat .mat-sort-header-container {
+.lib-mat-table .mat-sort-header-container {
   justify-content: center !important;
 }
 
-.lin-mat .mat-sort-header-disabled .mat-sort-header-arrow {
+.lin-mat-table .mat-sort-header-disabled .mat-sort-header-arrow {
   display: none !important;
 }
 
-.lib-mat .mat-column-action {
+.lib-mat-table .mat-column-action {
   padding-left: 0px !important;
   width: 50px;
 }
 
-.lib-mat-actions-menu {
+.lib-mat-table-actions-menu {
   box-shadow: none !important;
 }
 
-.lib-mat-actions-menu.mat-menu-panel {
+.lib-mat-table-actions-menu.mat-menu-panel {
   border-radius: 0px !important;
   border: solid 1px black !important;
 }
-.lib-mat-actions-menu .mat-menu-content:not(:empty) {
+.lib-mat-table-actions-menu .mat-menu-content:not(:empty) {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
-.lib-mat-actions-menu .mat-menu-item {
+.lib-mat-table-actions-menu .mat-menu-item {
   height: 35px;
   line-height: 35px;
 }
 
-.lib-mat-actions-menu .mat-menu-item:hover:not([disabled]),
-.lib-mat-actions-menu .mat-menu-item.cdk-program-focused:not([disabled]),
-.lib-mat-actions-menu .mat-menu-item.cdk-keyboard-focused:not([disabled]),
-.lib-mat-actions-menu .mat-menu-item-highlighted:not([disabled]),
-.lib-mat-actions-menu .mat-menu-item:hover {
+.lib-mat-table-actions-menu .mat-menu-item:hover:not([disabled]),
+.lib-mat-table-actions-menu .mat-menu-item.cdk-program-focused:not([disabled]),
+.lib-mat-table-actions-menu .mat-menu-item.cdk-keyboard-focused:not([disabled]),
+.lib-mat-table-actions-menu .mat-menu-item-highlighted:not([disabled]),
+.lib-mat-table-actions-menu .mat-menu-item:hover {
   background: transparent;
 }
 
-.lib-mat th.mat-table-sticky {
+.lib-mat-table th.mat-table-sticky {
   border: none !important;
 }

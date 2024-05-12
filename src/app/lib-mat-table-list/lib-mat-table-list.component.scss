@@ -25,15 +25,15 @@
   min-width: 180px;
 }
 
-:host-context(.lib-mat-black-header) .mat-header-cell {
+:host-context(.lib-mat-table-black-header) .mat-header-cell {
   background: #666;
   color: #fff;
 }
 
-:host-context(.lib-mat-black-header) .mat-header-cell:first-child {
+:host-context(.lib-mat-table-black-header) .mat-header-cell:first-child {
   border-top-left-radius: 5px;
 }
 
-:host-context(.lib-mat-black-header) .mat-header-cell:last-child {
+:host-context(.lib-mat-table-black-header) .mat-header-cell:last-child {
   border-top-right-radius: 5px;
 }
