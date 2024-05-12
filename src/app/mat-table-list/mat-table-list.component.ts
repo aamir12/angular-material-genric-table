@@ -134,4 +134,8 @@ export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
     const tableContainer = this.document.getElementById(this.tableContainerId);
     (tableContainer as HTMLElement).scrollIntoView();
   }
+
+  isActionSticky(position:'start'|'end') {
+    return !!this.actionBtns && this.actionBtns.positions ===position && this.actionBtns.sticky;
+  }
 }

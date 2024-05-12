@@ -71,6 +71,7 @@ export class TableComponent implements OnInit {
 
   actionBtns: IActionBtnConfiguration<IUserData> = {
     positions: 'start',
+    sticky:true,
     headerClasses: ['text-center', 'action-column'],
     dataClasses: ['text-center', 'action-column'],
     buttons: [

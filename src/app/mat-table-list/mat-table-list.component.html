@@ -12,7 +12,7 @@
       [matSortActive]="sortActive"
       [matSortDirection]="sortDirection"
     >
-      <ng-container matColumnDef="action" *ngIf="!!actionBtns">
+      <ng-container matColumnDef="action" *ngIf="!!actionBtns" [sticky]="isActionSticky('start')" [stickyEnd]="isActionSticky('end')">
         <th
           mat-header-cell
           *matHeaderCellDef
