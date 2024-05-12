@@ -35,7 +35,6 @@ export class TableComponent implements OnInit {
       name: 'name',
       disableSorting: false,
       displayName: 'Name',
-
       headerClasses: ['text-center'],
       dataClasses: ['text-center'],
       transForm: (value: any) => {

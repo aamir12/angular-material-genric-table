@@ -39,7 +39,7 @@ export interface IActionBtnConfiguration<T> {
   dataClasses?: string[];
   classes?: string[];
   buttons: IActionBtn<T>[];
-  sticky:boolean;
+  sticky?:boolean;
 }
 
 export interface SearchObject {

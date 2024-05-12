@@ -49,6 +49,10 @@
   </div>
 </div>
 
+<!-- 
+
+  [rowClickListner]="onRowClick"
+ -->
 <lib-mat-table-list
   class="lib-mat-black-header"
   [data]="data"
@@ -56,7 +60,7 @@
   [columns]="columns"
   [filterFn]="inputFilterFn"
   [sortFn]="inputSortFn"
-  [rowClickListner]="onRowClick"
+  
   [actionBtns]="actionBtns"
   [pageSize]="10"
   [limitSizes]="[5,10,50]"
