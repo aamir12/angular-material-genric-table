@@ -21,7 +21,7 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './lib-mat-table-list.component.html',
   styleUrls: ['./lib-mat-table-list.component.scss'],
 })
-export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
+export class LibMatTableListComponent<T> implements OnInit {
   @Input() data: T[] = [];
   @Input() filterValue: string;
   @Input() containerClasses: string[] = [];
@@ -39,19 +39,23 @@ export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
   @Input() actionBtns!: IActionBtnConfiguration<T>;
 
   dataSource!: MatTableDataSource<T>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild('table', { static: false }) tableElement!: ElementRef;
-  // console.log(this.columns);
+  @ViewChild(MatPaginator,{static:true}) paginator!: MatPaginator;
+  @ViewChild(MatSort,{static:true}) sort!: MatSort;
   displayedColumns: string[] = [];
   tableContainerId = uniqueId();
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
   ngOnInit() {
     this.setUpcolumnsSetting();
-    this.dataSource = new MatTableDataSource(this.data);
+    this.setUpByData();
     this.filterDefinition();
     this.sortDefinition();
+  }
+
+  setUpByData() {
+    this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -64,9 +68,7 @@ export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
       changes['data'].currentValue !== changes['data'].previousValue
     ) {
       console.log('Data Changed');
-      this.dataSource = new MatTableDataSource(this.data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      this.setUpByData()
       this.filterDefinition();
       this.sortDefinition();
       this.applyFilter();
@@ -116,10 +118,6 @@ export class LibMatTableListComponent<T> implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
 
   onRowClick(row: T) {
     if (this.rowClickListner) {
