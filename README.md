@@ -1,4 +1,8 @@
-# Fully Configurable - Angular Material Table
+# Configurable - Angular Material Table
+## Demo
+
+[Demo ⚡️](https://stackblitz.com/edit/github-yixpbs)
+
 
 ## Features
 
