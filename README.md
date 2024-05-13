@@ -22,7 +22,7 @@
 
 ## API Reference
 
-```http
+```js
 <lib-mat-table-list
   class="lib-mat-table-black-header"
   [data]="data"
@@ -66,28 +66,31 @@
 
 ## Interfaces
 ### IColumn
-name: string - The name of the column.
-disableSorting: boolean (optional) - Indicates whether sorting is disabled for this column.
-displayName: string - The display name of the column.
-headerStyle: Style (optional) - CSS styles for the column header.
-dataStyle: Style (optional) - CSS styles for the column data.
-transForm: (value: any) => any (optional) - A transformation function for the column data.
-headerClasses: string[] (optional) - CSS classes for the column header.
-dataClasses: string[] (optional) - CSS classes for the column data.
+| Key               | Description                                                      |
+|`name`| string - The name of the column.|
+|`disableSorting`| boolean (optional) - Indicates whether sorting is disabled for this column.|
+|`displayName`| string - The display name of the column.|
+|`headerStyle`| Style (optional) - CSS styles for the column header.|
+|`dataStyle`| Style (optional) - CSS styles for the column data.|
+|`transForm`| (value: any) => any (optional) - A transformation function for the column data.|
+|`headerClasses`| string[] (optional) - CSS classes for the column header.|
+|`dataClasses`| string[] (optional) - CSS classes for the column data.|
+
 ### IActionBtn<T>
-name: string - The name of the action button.
-onClick: (data: T) => void - Function to be executed when the action button is clicked.
-icon: string (optional) - The icon name for the action button.
-access: (data: T) => boolean (optional) - Function to determine whether the action button is accessible for a specific row.
+|`name`| string - The name of the action button.|
+|`onClick`| (data: T) => void - Function to be executed when the action button is clicked.|
+|`icon` | string (optional) - The icon name for the action button.|
+|`access`| (data: T) => boolean (optional) - Function to determine whether the action button is accessible for a specific row.
+
 ### IActionBtnConfiguration<T>
-positions: 'start' | 'end' - Position of the action buttons relative to the columns.
-headerStyle: Style (optional) - CSS styles for the action button header.
-dataStyle: Style (optional) - CSS styles for the action button data.
-headerClasses: string[] (optional) - CSS classes for the action button header.
-dataClasses: string[] (optional) - CSS classes for the action button data.
-classes: string[] (optional) - CSS classes for the action buttons.
-buttons: IActionBtn<T>[] - Array of action button configurations.
-sticky: boolean (optional) - Indicates whether the action buttons are sticky.
+|`positions`| 'start' | 'end' - Position of the action buttons relative to the columns.|
+|`headerStyle`| Style (optional) - CSS styles for the action button header.|
+|`dataStyle`| Style (optional) - CSS styles for the action button data.|
+|`headerClasses`| string[] (optional) - CSS classes for the action button header.|
+|`dataClasses`| string[] (optional) - CSS classes for the action button data.|
+|`classes`| string[] (optional) - CSS classes for the action buttons.|
+|`buttons`| IActionBtn<T>[] - Array of action button configurations.|
+|`sticky` | boolean (optional) - Indicates whether the action buttons are sticky.|
 
 ## All available types
 
