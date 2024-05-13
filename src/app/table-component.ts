@@ -15,7 +15,7 @@ export class TableComponent implements OnInit {
   data: IUserData[] = [];
   textSearch = '';
   project_type = 'ALL';
-  status_type = '3';
+  status_type = '1';
   filterValue: string = '';
 
   inputFilterFn!: (row: IUserData, filter: string) => boolean;

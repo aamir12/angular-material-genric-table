@@ -1,7 +1,5 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
   Inject,
   Input,
   OnInit,
@@ -36,7 +34,6 @@ export class LibMatTableListComponent<T> implements OnInit {
   @Input() sortFn!: (data: T[], sort: MatSort) => T[];
   @Input() sortActive: string = '';
   @Input() sortDirection: 'asc' | 'desc' | '' = 'asc';
-  //need to work on action btns
   @Input() actionBtns!: IActionBtnConfiguration<T>;
 
   dataSource!: MatTableDataSource<T>;
