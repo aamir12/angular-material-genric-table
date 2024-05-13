@@ -5,52 +5,59 @@
 - Fully Type Safe
 - Custom Filtration
 - Custom Sorting
-- Disable Specific Columns Sorting
+- Disable Specific Column's Sorting
 - Configurable Columns
-- Apply Multiple Columns Filtration by using custom function
 - Columns Data Transfomation
-- Custom Columns width
+- Custom Columns styling
 - Responsive Table
 - Action Buttons
-- Action Button width and position
+- Action Button styling and position
 - Pagination and Page Size
 - Row Click handler
 - Theme Support
-- Action buttons checks permissoin before render
-- Window Object Wrapper(Personal Testing)
+- Action buttons permissoin supports
+- Sticky Action Button
+- Scroll the table on page change
+- Default column Sorting option
 
 ## API Reference
 
 ```http
-<app-mat-table-list
-  class="lib-mat-black-header"
+<lib-mat-table-list
+  class="lib-mat-table-black-header"
   [data]="data"
   [filterValue]="filterValue"
   [columns]="columns"
-  [filterFn]="filterFN"
-  [sortFn]="sortFn"
-  [rowClickListner]="onRowClick"
+  [filterFn]="inputFilterFn"
+  [sortFn]="inputSortFn"
   [actionBtns]="actionBtns"
-  [pageSize]="5"
-  [limitSizes]="[5,10,50]"
-  [containerClasses]="['py-5','custom-table']"
+  [pageSize]="10"
+  [containerClasses]="['py-5']"
   [tableContainerClasses]="['pt-2']"
-></app-mat-table-list>
+  [rowClickListner]="onRowClick"
+  [sortActive]="'creationDate'"
+  [sortDirection]="'desc'"
+  [paginationClasses] = "['bg-transparent','mt-3']"
+></lib-mat-table-list>
 ```
 
 | Parameter               | Description                                                      |
 | :---------------------- | :--------------------------------------------------------------- |
-| `data`                  | **Required** Actual Data                                         |
-| `columns`               | **Required** Columns Defination                                  |
-| `filterValue`           | Filter value must be string                                      |
-| `filterFn`              | Custom Filter Function                                           |
+| `data`                  | **Required** An array of generic type T representing the data to be displayed in the table |
+| `columns`               | **Required** An array of IColumn objects representing the columns configuration of the table.|
+| `filterValue`           | A string representing the filter value for filtering the data in the table|
 | `sortFn`                | Custom Sorting Function                                          |
 | `rowClickListner`       | Row Click Handler Function                                       |
 | `actionBtns`            | Action Columns Setting and function definition                   |
-| `pageSize`              | Number of pages to be display                                    |
+| `pageSize`              | A number representing the number of items to be displayed per page.|
 | `class`                 | define class by :host-context inside the component               |
-| `tableContainerClasses` | Array of classes.it will be apply on the table container         |
-| `containerClasses`      | Array of classes. It will be apply on the container of component |
+| `tableContainerClasses` | An array of strings representing the CSS classes to be applied to the table container.|
+| `containerClasses`      | An array of strings representing the CSS classes to be applied to the outer container of the table. |
+| `paginationClasses`     | An array of strings representing the CSS classes to be applied to the pagination section. |
+| `limitSizes`            |  An array of numbers representing the options for page size selection.|
+|`scrollOffset`           | A number representing the offset used for scrolling to the table after pagination.|
+|`rowClickListner`        | A function that handles row click events.|
+|`filterFn`               | A function used for custom data filtering.|
 
 | Parameter    | Type                                                               |
 | :----------- | :----------------------------------------------------------------- |
