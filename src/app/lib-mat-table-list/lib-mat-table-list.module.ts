@@ -3,7 +3,6 @@ import { LibMatTableListComponent } from './lib-mat-table-list.component';
 import { WindowProvider } from '../window.service';
 
 import { CommonModule } from '@angular/common';
-import { IconsModule } from '../shared/icons.module';
 import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
@@ -11,7 +10,6 @@ import { MaterialModule } from '../shared/material.module';
   imports: [
     CommonModule,
     MaterialModule,
-    IconsModule
   ],
   providers: [WindowProvider],
   exports: [LibMatTableListComponent],

@@ -38,8 +38,7 @@
             class="action-btn"
             type="button"
           >
-            <!-- <mat-icon>more_vert</mat-icon> -->
-            <fa-icon class="pointer" [icon]="['fas', 'ellipsis-v']"></fa-icon>
+            <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu
             #menu="matMenu"
@@ -52,7 +51,7 @@
                 *ngIf="action.access ? action.access(row) : true"
                 (click)="action.onClick(row)"
               >
-                <!-- <mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon> -->
+                <mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon>
                 <span>{{ action.name }}</span>
               </button>
             </ng-container>

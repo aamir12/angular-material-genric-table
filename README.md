@@ -50,7 +50,6 @@
 | `rowClickListner`       | Row Click Handler Function                                       |
 | `actionBtns`            | Action Columns Setting and function definition                   |
 | `pageSize`              | A number representing the number of items to be displayed per page.|
-| `class`                 | define class by :host-context inside the component               |
 | `tableContainerClasses` | An array of strings representing the CSS classes to be applied to the table container.|
 | `containerClasses`      | An array of strings representing the CSS classes to be applied to the outer container of the table. |
 | `paginationClasses`     | An array of strings representing the CSS classes to be applied to the pagination section. |
