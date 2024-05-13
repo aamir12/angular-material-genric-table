@@ -64,7 +64,7 @@
 |`actionBtns` | An object of type IActionBtnConfiguration representing the configuration for action buttons in the table.|
 
 
-## Interfaces
+##  All available Interfaces
 ### IColumn
 | Key               | Description                                                      |
 | :---------------------- | :--------------------------------------------------------------- |
@@ -97,8 +97,8 @@
 |`buttons`| IActionBtn<T>[] - Array of action button configurations.|
 |`sticky` | boolean (optional) - Indicates whether the action buttons are sticky.|
 
-## All available types
+
 
 #### Made By Aamir Khan
 
-Thank You!! 😄
+Thank You!! 
