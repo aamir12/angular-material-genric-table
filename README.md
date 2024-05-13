@@ -1,4 +1,4 @@
-# Configurable - Angular Material Table
+# Generic Component - Angular Material Table
 ## Demo
 
 [Demo ⚡️](https://stackblitz.com/edit/github-yixpbs)
