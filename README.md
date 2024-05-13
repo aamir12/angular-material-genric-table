@@ -58,49 +58,38 @@
 |`scrollOffset`           | A number representing the offset used for scrolling to the table after pagination.|
 |`rowClickListner`        | A function that handles row click events.|
 |`filterFn`               | A function used for custom data filtering.|
+| `sortFn` | A function used for custom data sorting.|
+| `sortActive` | A string representing the active sorting column. |
+|`sortDirection` | A string representing the sorting direction ('asc' or 'desc').|
+|`actionBtns` | An object of type IActionBtnConfiguration representing the configuration for action buttons in the table.|
 
-| Parameter    | Type                                                               |
-| :----------- | :----------------------------------------------------------------- |
-| `columns`    | IColumn                                                            |
-| `actionBtns` | IActionBtnConfiguration<T>, Here T is the type of row in the table |
-| data         | T[]                                                                |
+
+## Interfaces
+### IColumn
+name: string - The name of the column.
+disableSorting: boolean (optional) - Indicates whether sorting is disabled for this column.
+displayName: string - The display name of the column.
+headerStyle: Style (optional) - CSS styles for the column header.
+dataStyle: Style (optional) - CSS styles for the column data.
+transForm: (value: any) => any (optional) - A transformation function for the column data.
+headerClasses: string[] (optional) - CSS classes for the column header.
+dataClasses: string[] (optional) - CSS classes for the column data.
+### IActionBtn<T>
+name: string - The name of the action button.
+onClick: (data: T) => void - Function to be executed when the action button is clicked.
+icon: string (optional) - The icon name for the action button.
+access: (data: T) => boolean (optional) - Function to determine whether the action button is accessible for a specific row.
+### IActionBtnConfiguration<T>
+positions: 'start' | 'end' - Position of the action buttons relative to the columns.
+headerStyle: Style (optional) - CSS styles for the action button header.
+dataStyle: Style (optional) - CSS styles for the action button data.
+headerClasses: string[] (optional) - CSS classes for the action button header.
+dataClasses: string[] (optional) - CSS classes for the action button data.
+classes: string[] (optional) - CSS classes for the action buttons.
+buttons: IActionBtn<T>[] - Array of action button configurations.
+sticky: boolean (optional) - Indicates whether the action buttons are sticky.
 
 ## All available types
-
-```http
-export interface Style {
-  [key: string]: string;
-}
-
-export interface IColumn {
-  name: string;
-  disableSorting?: boolean;
-  displayName: string;
-  headerStyle?: Style;
-  dataStyle?: Style;
-  transForm?: (value: string) => string;
-  headerClasses?: string[];
-  dataClasses?: string[];
-}
-
-export interface IActionBtn<T> {
-  name: string;
-  onClick: (data: T) => void;
-  icon?: string;
-  access?: (data: T) => boolean;
-}
-
-export interface IActionBtnConfiguration<T> {
-  positions: 'start' | 'end';
-  headerStyle?: Style;
-  dataStyle?: Style;
-  headerClasses?: string[];
-  dataClasses?: string[];
-  classes?: string[];
-  buttons: IActionBtn<T>[];
-}
-
-```
 
 #### Made By Aamir Khan
 
