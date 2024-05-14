@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   inputSortFn!: (items: IUserData[], sort: MatSort) => IUserData[];
   //Define column configuation
   //transForm,style,disableSorting are optional
-
+  recentSortDirection : 'asc' |'desc' = 'asc';
   columns: IColumn[] = [
     {
       name: 'id',
@@ -169,12 +169,24 @@ export class TableComponent implements OnInit {
     return true;
   }
 
+  
   //Custom Sorting Function
+  /**
+   * By Angular material table sort in three ways 
+   * asc
+   * desc
+   * random
+   * We can also remove random order by adding extra condition of recentSortDirection
+   */
   sortFN = (items: IUserData[], sort: MatSort): IUserData[] => {
+    // console.log("direction",sort.direction);
     if (!sort.active || sort.direction === '') {
+
+      // sort.direction = this.recentSortDirection === 'asc' ? 'desc' : 'asc';
       return items;
     }
 
+    // this.recentSortDirection = sort.direction;
     return items.sort((a, b) => {
       let comparatorResult = 0;
       switch (sort.active) {
