@@ -47,3 +47,16 @@ export interface SearchObject {
 }
 
 export type NonArrayObject = object & { length?: never };
+
+export interface TableMeta<T>  {
+  numberofFilterRecords : string;
+  currentPage: number;
+  itemPerPage:number;
+  sortBy: string;
+  sortDirection: string;
+  firstRenderedRecord : T;
+  lastRenderedRecord: T;
+  tableHeight: number;
+  numberOfColumns: number;
+  numberOfVisibleRows:number;
+}

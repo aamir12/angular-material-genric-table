@@ -41,6 +41,7 @@ export class LibMatTableListComponent<T> implements OnInit {
   @Input() isLoading: boolean = false;
   @Input() isLoadingLable: string = 'Loading...';
   @Input() noDataFoundLable: string = 'No Data Found.';
+  @Input() isScrollUpAfterPageChange: boolean = true;
   @Output() afterTableRender = new EventEmitter<number>();
   dataSource!: MatTableDataSource<T>;
   @ViewChild(MatPaginator,{static:true}) paginator!: MatPaginator;
@@ -137,8 +138,10 @@ export class LibMatTableListComponent<T> implements OnInit {
   }
 
   onPageChange(event: PageEvent) {
+    if(!this.isScrollUpAfterPageChange ) {
+      return;
+    }
     const tableContainer = this.document.getElementById(this.tableContainerId);
-
     this.window.scrollTo(0, (tableContainer as HTMLElement).offsetTop - 30);
     //(tableContainer as HTMLElement).scrollIntoView();
 
