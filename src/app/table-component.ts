@@ -178,6 +178,8 @@ export class TableComponent implements OnInit {
    * random
    * We can also remove random order by adding extra condition of recentSortDirection
    */
+
+
   sortFN = (items: IUserData[], sort: MatSort): IUserData[] => {
     // console.log("direction",sort.direction);
     if (!sort.active || sort.direction === '') {
