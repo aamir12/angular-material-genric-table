@@ -39,6 +39,8 @@ export class LibMatTableListComponent<T> implements OnInit {
   @Input() sortDirection: 'asc' | 'desc' | '' = 'asc';
   @Input() actionBtns!: IActionBtnConfiguration<T>;
   @Input() isLoading: boolean = false;
+  @Input() isLoadingLable: string = 'Loading...';
+  @Input() noDataFoundLable: string = 'No Data Found.';
   @Output() afterTableRender = new EventEmitter<number>();
   dataSource!: MatTableDataSource<T>;
   @ViewChild(MatPaginator,{static:true}) paginator!: MatPaginator;

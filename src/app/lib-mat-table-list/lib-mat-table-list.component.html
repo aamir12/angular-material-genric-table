@@ -95,7 +95,7 @@
           class="mat-cell text-center"
           [attr.colspan]="displayedColumns.length"
         >
-         {{ isLoading ? 'Loading...' : 'No data found' }} 
+         {{ isLoading ? isLoadingLable : noDataFoundLable }} 
         </td>
       </tr>
     </table>
