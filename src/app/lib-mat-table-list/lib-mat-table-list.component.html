@@ -5,6 +5,8 @@
     [id]="tableContainerId"
   >
     <table
+
+    (contentChanged) ="onContentRendered()"
       #table
       mat-table
       [dataSource]="dataSource"
@@ -93,7 +95,7 @@
           class="mat-cell text-center"
           [attr.colspan]="displayedColumns.length"
         >
-          No data found
+         {{ isLoading ? 'Loading...' : 'No data found' }} 
         </td>
       </tr>
     </table>

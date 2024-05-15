@@ -56,3 +56,10 @@ export function textSearchFN<T extends { [key: string]: any }>(source: T, keys: 
   }
   return isMatch;
 }
+
+export function changeDateFormat(date: string, format ='MM-DD-YYYY',returnFormat='ll'): string {
+  if (!date) {
+    return '';
+  }
+  return moment(date, format).format(returnFormat);
+}

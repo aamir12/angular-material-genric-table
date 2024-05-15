@@ -6,12 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { WindowProvider } from './window.service';
 import { LibMatTableListModule } from './lib-mat-table-list/lib-mat-table-list.module';
 import { CurrencyPipe } from '@angular/common';
-import { AP3DatePipe } from './pipes/ap3date.pipe';
 import { MaterialModule } from './shared/material.module';
 import { TableComponent } from './table-component';
 
 @NgModule({
-  declarations: [TableComponent, AP3DatePipe],
+  declarations: [TableComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -21,7 +20,7 @@ import { TableComponent } from './table-component';
     ReactiveFormsModule,
     LibMatTableListModule,
   ],
-  providers: [WindowProvider, CurrencyPipe, AP3DatePipe],
+  providers: [WindowProvider, CurrencyPipe],
   bootstrap: [TableComponent],
 })
 export class AppModule {}

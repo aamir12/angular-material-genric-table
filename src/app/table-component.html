@@ -32,7 +32,10 @@
       <mat-button-toggle value="TEAM">Team</mat-button-toggle>
       <mat-button-toggle value="ALL">All</mat-button-toggle>
     </mat-button-toggle-group>
+     
   </div>
+
+  
 
   <div class="text-center text-md-start">
     <p>Status</p>
@@ -47,7 +50,10 @@
       <mat-button-toggle value="3">Both</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
+
+  <b class="ps-2 align-end"> Total Records: {{ totalRecords }} </b>
 </div>
+
 
 <!-- 
 
@@ -67,5 +73,7 @@
   [rowClickListner]="onRowClick"
   [sortActive]="'creationDate'"
   [sortDirection]="'desc'"
+  [isLoading] = "isLoading"
   [paginationClasses] = "['bg-transparent','mt-3']"
+  (afterTableRender) ="onAfterTableRender($event)"
 ></lib-mat-table-list>

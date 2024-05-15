@@ -3,8 +3,7 @@ import { MatSort } from '@angular/material/sort';
 import { IActionBtnConfiguration, IColumn, IUserData } from './model';
 import { createNewUser } from './data';
 import { CurrencyPipe } from '@angular/common';
-import { AP3DatePipe } from './pipes/ap3date.pipe';
-import { dateCompare, numberCompare, stringCompare, textSearchFN } from './utility/common.fn';
+import { changeDateFormat, dateCompare, numberCompare, stringCompare, textSearchFN } from './utility/common.fn';
 
 @Component({
   selector: 'app-table',
@@ -97,7 +96,8 @@ export class TableComponent implements OnInit {
   myProject: IUserData[] = [];
   teamProject: IUserData[] = [];
   allProject: IUserData[] = [];
-
+  totalRecords = 0;
+  isLoading = false;
   //to check access of variables;
   testVar: string = 'test variables';
 
@@ -110,7 +110,6 @@ export class TableComponent implements OnInit {
 
   constructor(
     private currencyPipe: CurrencyPipe,
-    private ap3DatePipe: AP3DatePipe
   ) {}
 
   ngOnInit() {
@@ -120,7 +119,7 @@ export class TableComponent implements OnInit {
     this.inputSortFn = this.sortFN.bind(this);
 
     this.allProject = users.map((x) => {
-      x.creationDate = this.ap3DatePipe.transform(x.creationDate, 'll');
+      x.creationDate = changeDateFormat(x.creationDate);
       return x;
     });
     this.myProject = this.allProject.filter((x) => x.project_type === 'MY');
@@ -130,9 +129,11 @@ export class TableComponent implements OnInit {
     // this.info('MY', this.myProject);
     // this.info('TEAM', this.teamProject);
 
+    this.isLoading = true
     setTimeout(() => {
       this.onProjectTypeChange();
-    }, 0);
+      this.isLoading = false;
+    }, 2000);
   }
 
   applyFilter() {
@@ -260,5 +261,16 @@ export class TableComponent implements OnInit {
 
   onStatusChange() {
     this.applyFilter();
+  }
+
+  contentChanged() {
+    console.log("render complete");
+  }
+
+  
+  onAfterTableRender(event:number) {
+    setTimeout(() => {
+      this.totalRecords = event;
+    },0)
   }
 }

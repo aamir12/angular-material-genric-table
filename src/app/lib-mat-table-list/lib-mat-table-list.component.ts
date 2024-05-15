@@ -3,8 +3,10 @@ import {
   Inject,
   Input,
   OnInit,
+  Output,
   SimpleChanges,
   ViewChild,
+  EventEmitter
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -14,6 +16,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { uniqueId } from '../utility/common.fn';
 import { DOCUMENT } from '@angular/common';
 import { WINDOW } from '../window.service';
+
 
 @Component({
   selector: 'lib-mat-table-list',
@@ -35,7 +38,8 @@ export class LibMatTableListComponent<T> implements OnInit {
   @Input() sortActive: string = '';
   @Input() sortDirection: 'asc' | 'desc' | '' = 'asc';
   @Input() actionBtns!: IActionBtnConfiguration<T>;
-
+  @Input() isLoading: boolean = false;
+  @Output() afterTableRender = new EventEmitter<number>();
   dataSource!: MatTableDataSource<T>;
   @ViewChild(MatPaginator,{static:true}) paginator!: MatPaginator;
   @ViewChild(MatSort,{static:true}) sort!: MatSort;
@@ -141,5 +145,9 @@ export class LibMatTableListComponent<T> implements OnInit {
 
   isActionSticky(position:'start'|'end'):boolean {
     return  this.dataSource?.filteredData.length > 0 && this.actionBtns?.positions === position && !!this.actionBtns?.sticky;
+  }
+
+  onContentRendered() {
+    this.afterTableRender.emit(this.dataSource.filteredData.length || 0)
   }
 }
