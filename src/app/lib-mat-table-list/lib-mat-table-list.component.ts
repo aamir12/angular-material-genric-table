@@ -25,7 +25,7 @@ import { WINDOW } from '../window.service';
 })
 export class LibMatTableListComponent<T> implements OnInit {
   @Input() data: T[] = [];
-  @Input() filterValue: string;
+  @Input() filterValue: string = '';
   @Input() containerClasses: string[] = [];
   @Input() tableContainerClasses: string[] = [];
   @Input() paginationClasses: string[] = [];
@@ -37,9 +37,9 @@ export class LibMatTableListComponent<T> implements OnInit {
   @Input() sortFn!: (data: T[], sort: MatSort) => T[];
   @Input() sortActive: string = '';
   @Input() sortDirection: 'asc' | 'desc' | '' = 'asc';
-  @Input() actionBtns!: IActionBtnConfiguration<T>;
+  @Input() actionBtns: IActionBtnConfiguration<T> | undefined = undefined;
   @Input() isLoading: boolean = false;
-  @Input() isLoadingLable: string = 'Loading...';
+  @Input() loadingLable: string = 'Loading...';
   @Input() noDataFoundLable: string = 'No Data Found.';
   @Input() isScrollUpAfterPageChange: boolean = true;
   @Output() afterTableRender = new EventEmitter<number>();
@@ -117,7 +117,7 @@ export class LibMatTableListComponent<T> implements OnInit {
   }
 
   applyFilter() {
-    if (this.filterValue?.trim()) {
+    if (this.filterValue.trim()) {
       this.dataSource.filter = this.filterValue.trim();
 
       if (this.dataSource.paginator) {
