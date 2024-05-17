@@ -9,7 +9,8 @@
 
 .mat-cell,
 .mat-header-cell {
-  min-width: 100px;
+  min-width: var(--custom-header-cell-min-width, 100px);
+  width: var(--custom-header-cell-width,auto);
 }
 
 .action-btn {

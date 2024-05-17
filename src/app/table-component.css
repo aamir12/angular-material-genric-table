@@ -20,4 +20,10 @@ th {
   background-color: rgb(216, 181, 161);
 }
 
+/* override parent to child css */
+/* :host {
+  --custom-header-cell-min-width: 100px;
+  --custom-header-cell-width: auto;
+}
+ */
 
