@@ -48,6 +48,8 @@
 | Parameter               | Description                                                      |
 | :---------------------- | :--------------------------------------------------------------- |
 | `data`                  | **Required** An array of generic type T representing the data to be displayed in the table |
+| `class`                  | **optinoal** `lib-mat-table-black-header` is the theme name of black header|
+
 | `columns`               | **Required** An array of IColumn objects representing the columns configuration of the table.|
 | `filterValue`           | A string representing the filter value for filtering the data in the table|
 | `sortFn`                | Custom Sorting Function                                          |
