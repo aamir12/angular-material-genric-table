@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatButtonModule,
+    MatSlideToggleModule,
   ],
   exports: [
     MatTableModule,
@@ -41,7 +43,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule
   ],
 })
 

@@ -7,6 +7,7 @@ export interface IUserData {
   project_type: string;
   status: number;
   creationDate: string;
+  isArchived:boolean;
 }
 
 export interface Style {

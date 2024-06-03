@@ -4,6 +4,7 @@ import { IActionBtnConfiguration, IColumn, IUserData } from './model';
 import { createNewUser } from './data';
 import { CurrencyPipe } from '@angular/common';
 import { changeDateFormat, dateCompare, numberCompare, stringCompare, textSearchFN } from './utility/common.fn';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-table',
@@ -98,6 +99,7 @@ export class TableComponent implements OnInit {
   allProject: IUserData[] = [];
   totalRecords = 0;
   isLoading = false;
+  isArchieved = false;
   //to check access of variables;
   testVar: string = 'test variables';
 
@@ -122,6 +124,7 @@ export class TableComponent implements OnInit {
       x.creationDate = changeDateFormat(x.creationDate);
       return x;
     });
+    console.log(JSON.stringify(this.allProject,null,2))
     this.myProject = this.allProject.filter((x) => x.project_type === 'MY');
     this.teamProject = this.allProject.filter((x) => x.project_type === 'TEAM');
 
@@ -140,6 +143,7 @@ export class TableComponent implements OnInit {
     this.filterValue = JSON.stringify({
       textSearch: this.textSearch,
       status: this.status_type,
+      isArchieved:this.isArchieved,
     });
   }
 
@@ -221,18 +225,20 @@ export class TableComponent implements OnInit {
 
   filterFN = (row: IUserData, filter: string): boolean => {
     const filterOption = JSON.parse(filter);
-    const { status, textSearch } = filterOption;
+    const { status, textSearch,isArchieved } = filterOption;
     const isBothSelect = +status === 3;
+    const matchArchieved =  row.isArchived === isArchieved;
     const isTextSearch = !!textSearch?.trim()?.length;
 
-    if (isBothSelect && !isTextSearch) {
+    if (isBothSelect && matchArchieved && !isTextSearch) {
       return true;
     }
 
     const matchesStatus = isBothSelect ||  +row.status === +status;
     const matchesTextSearch =
       !isTextSearch || textSearchFN(row,['id','name','fruit','price','creationDate'],textSearch);
-    return matchesStatus && matchesTextSearch;
+    
+    return matchesStatus && matchArchieved && matchesTextSearch;
   };
 
   // On Row Click
@@ -272,5 +278,9 @@ export class TableComponent implements OnInit {
     setTimeout(() => {
       this.totalRecords = event;
     },0)
+  }
+
+  onArcheivedView(event:MatSlideToggleChange) {
+    this.applyFilter();
   }
 }

@@ -51,7 +51,20 @@
     </mat-button-toggle-group>
   </div>
 
-  <b class="ps-2 align-end"> Total Records: {{ totalRecords }} </b>
+  <div>
+    <mat-slide-toggle
+    (change) ="onArcheivedView($event)"
+    [(ngModel)] ="isArchieved"
+        >
+        View Archieved
+      </mat-slide-toggle>
+  </div>
+
+  <!-- <b class="ps-2 align-end"> 
+    
+    Total Records: {{ totalRecords }} 
+  
+  </b> -->
 </div>
 
 

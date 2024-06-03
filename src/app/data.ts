@@ -52,7 +52,12 @@ const randomDates = [
   '09-05-2009',
   '07-23-2017',
   '12-10-2004',
+  '',
+  '',
+  '',
 ];
+
+const randomIsArchived = [true,false]
 
 export /** Builds and returns a new User. */
 function createNewUser(id: number): IUserData {
@@ -73,6 +78,7 @@ function createNewUser(id: number): IUserData {
     price: Math.round(Math.random() * 1000),
     creationDate:
       randomDates[Math.round(Math.random() * (randomDates.length - 1))],
+      isArchived: randomIsArchived[Math.round(Math.random() * (randomIsArchived.length - 1))],
   };
 }
 
