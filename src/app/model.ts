@@ -28,10 +28,12 @@ export interface IColumn {
 }
 
 export interface IActionBtn<T> {
-  name: string;
+  label: string;
   onClick: (data: T,ref:LibMatTableListComponent<T>) => void;
   icon?: string;
   access?: (data: T) => boolean;
+  iconTransform?: (row: T) => string;
+  labelTransForm?: (row: T) => string;
 }
 
 export interface IActionBtnConfiguration<T> {

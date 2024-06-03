@@ -54,8 +54,13 @@
                 *ngIf="action.access ? action.access(row) : true"
                 (click)="action.onClick(row,this)"
               >
-                <mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon>
-                <span>{{ action.name }}</span>
+                <mat-icon *ngIf="action.icon || action.iconTransform">{{
+                  action.iconTransform ? action.iconTransform(row) : action.icon
+                }}</mat-icon>
+
+                <span>{{
+                  action.labelTransForm ? action.labelTransForm(row) : action.label
+                }}</span>
               </button>
             </ng-container>
           </mat-menu>

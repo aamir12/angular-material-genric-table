@@ -75,21 +75,33 @@ export class TableComponent implements OnInit {
     dataClasses: ['text-center', 'action-column'],
     buttons: [
       {
-        name: 'View',
+        label: 'View',
         onClick: this.onView.bind(this),
         icon: 'visibility',
         access: this.canView.bind(this),
       },
       {
-        name: 'Edit',
+        label: 'Edit',
         onClick: this.onEdit.bind(this),
         icon: 'edit',
         access: this.canEdit.bind(this),
       },
       {
-        name: 'Delete',
+        label: 'Delete',
         onClick: this.onDelete.bind(this),
         icon: 'delete',
+        access: this.canDelete.bind(this),
+      },
+      {
+        label: 'Archived/UnArchived',
+        labelTransForm: (row) => {
+          return row.isArchived ? 'Unarchived' : 'Archived';
+        },
+        iconTransform: (row) => {
+          return row.isArchived ? 'unarchive' : 'archive';
+        },
+        onClick: this.onToggleArchived.bind(this),
+        icon: 'archive',
         access: this.canDelete.bind(this),
       },
     ],
@@ -167,6 +179,11 @@ export class TableComponent implements OnInit {
       this.data.splice(rowIndex,1);
       ref.reRenderTable();
     },500)
+  }
+
+  onToggleArchived(row:IUserData,ref:LibMatTableListComponent<IUserData>) {
+    row.isArchived = !row.isArchived;
+    ref.reRenderTable();
   }
 
   canView(row: IUserData) {
