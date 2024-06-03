@@ -7,6 +7,8 @@ import { changeDateFormat, dateCompare, numberCompare, stringCompare, textSearch
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { LibMatTableListComponent } from './lib-mat-table-list/lib-mat-table-list.component';
 
+type Table = LibMatTableListComponent<IUserData>;
+
 @Component({
   selector: 'app-table',
   styleUrls: ['table-component.css'],
@@ -122,7 +124,7 @@ export class TableComponent implements OnInit {
   //   console.log('Active', data.filter((d) => d.status === 1).length);
   //   console.log('Inactive', data.filter((d) => d.status === 2).length);
   // }
-@ViewChild('libMatTable') libMatTable!:LibMatTableListComponent<IUserData>;
+@ViewChild('libMatTable') libMatTable!:Table;
   constructor(
     private currencyPipe: CurrencyPipe,
   ) {}
@@ -171,7 +173,7 @@ export class TableComponent implements OnInit {
     console.log(this.testVar);
   }
 
-  onDelete(row: IUserData,ref:LibMatTableListComponent<IUserData>) {
+  onDelete(row: IUserData,ref:Table) {
     console.log('On Delete', row);
     console.log(ref);
     setTimeout(()=> {
@@ -181,7 +183,7 @@ export class TableComponent implements OnInit {
     },500)
   }
 
-  onToggleArchived(row:IUserData,ref:LibMatTableListComponent<IUserData>) {
+  onToggleArchived(row:IUserData,ref:Table) {
     row.isArchived = !row.isArchived;
     ref.reRenderTable();
   }

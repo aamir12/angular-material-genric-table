@@ -70,3 +70,4 @@ export interface AfterRenderData {
   renderedRows: number,
   reRenderTableFn: () => void,
 }
+
