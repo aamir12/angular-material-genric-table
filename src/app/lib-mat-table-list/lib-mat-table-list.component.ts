@@ -11,7 +11,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IActionBtnConfiguration, IColumn } from '../model';
+import { AfterRenderData, IActionBtnConfiguration, IColumn } from '../model';
 import { PageEvent } from '@angular/material/paginator';
 import { uniqueId } from '../utility/common.fn';
 import { DOCUMENT } from '@angular/common';
@@ -42,7 +42,7 @@ export class LibMatTableListComponent<T> implements OnInit {
   @Input() loadingLable: string = 'Loading...';
   @Input() noDataFoundLable: string = 'No Data Found.';
   @Input() isScrollUpAfterPageChange: boolean = true;
-  @Output() afterTableRender = new EventEmitter<number>();
+  @Output() afterTableRender = new EventEmitter<AfterRenderData>();
   dataSource!: MatTableDataSource<T>;
   @ViewChild(MatPaginator,{static:true}) paginator!: MatPaginator;
   @ViewChild(MatSort,{static:true}) sort!: MatSort;
@@ -153,6 +153,15 @@ export class LibMatTableListComponent<T> implements OnInit {
   }
 
   onContentRendered() {
-    this.afterTableRender.emit(this.dataSource.filteredData.length || 0)
+    this.afterTableRender.emit(
+      {
+        renderedRows: this.dataSource.filteredData.length || 0,
+        reRenderTableFn: this.reRenderTable.bind(this)
+      }
+      )
+  }
+
+  reRenderTable() {
+    this.dataSource._updateChangeSubscription();
   }
 }

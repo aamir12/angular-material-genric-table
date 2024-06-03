@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { IActionBtnConfiguration, IColumn, IUserData } from './model';
+import { AfterRenderData, IActionBtnConfiguration, IColumn, IUserData } from './model';
 import { createNewUser } from './data';
 import { CurrencyPipe } from '@angular/common';
 import { changeDateFormat, dateCompare, numberCompare, stringCompare, textSearchFN } from './utility/common.fn';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { LibMatTableListComponent } from './lib-mat-table-list/lib-mat-table-list.component';
 
 @Component({
   selector: 'app-table',
@@ -109,7 +110,7 @@ export class TableComponent implements OnInit {
   //   console.log('Active', data.filter((d) => d.status === 1).length);
   //   console.log('Inactive', data.filter((d) => d.status === 2).length);
   // }
-
+@ViewChild('libMatTable') libMatTable!:LibMatTableListComponent<IUserData>;
   constructor(
     private currencyPipe: CurrencyPipe,
   ) {}
@@ -158,8 +159,14 @@ export class TableComponent implements OnInit {
     console.log(this.testVar);
   }
 
-  onDelete(row: IUserData) {
+  onDelete(row: IUserData,ref:LibMatTableListComponent<IUserData>) {
     console.log('On Delete', row);
+    console.log(ref);
+    setTimeout(()=> {
+      const rowIndex = this.data.findIndex(x => x.id === row.id);
+      this.data.splice(rowIndex,1);
+      ref.reRenderTable();
+    },500)
   }
 
   canView(row: IUserData) {
@@ -274,9 +281,9 @@ export class TableComponent implements OnInit {
   }
 
   
-  onAfterTableRender(event:number) {
+  onAfterTableRender(event:AfterRenderData) {
     setTimeout(() => {
-      this.totalRecords = event;
+      this.totalRecords = event.renderedRows;
     },0)
   }
 

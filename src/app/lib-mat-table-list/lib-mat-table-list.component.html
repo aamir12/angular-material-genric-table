@@ -50,8 +50,9 @@
             <ng-container *ngFor="let action of actionBtns.buttons">
               <button
                 mat-menu-item
+                type="button"
                 *ngIf="action.access ? action.access(row) : true"
-                (click)="action.onClick(row)"
+                (click)="action.onClick(row,this)"
               >
                 <mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon>
                 <span>{{ action.name }}</span>

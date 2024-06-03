@@ -1,3 +1,5 @@
+import { LibMatTableListComponent } from "./lib-mat-table-list/lib-mat-table-list.component";
+
 export interface IUserData {
   id: string;
   name: string;
@@ -27,7 +29,7 @@ export interface IColumn {
 
 export interface IActionBtn<T> {
   name: string;
-  onClick: (data: T) => void;
+  onClick: (data: T,ref:LibMatTableListComponent<T>) => void;
   icon?: string;
   access?: (data: T) => boolean;
 }
@@ -60,4 +62,9 @@ export interface TableMeta<T>  {
   tableHeight: number;
   numberOfColumns: number;
   numberOfVisibleRows:number;
+}
+
+export interface AfterRenderData {
+  renderedRows: number,
+  reRenderTableFn: () => void,
 }
