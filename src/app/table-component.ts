@@ -77,6 +77,7 @@ export class TableComponent implements OnInit {
     dataClasses: ['text-center', 'action-column'],
     buttons: [
       {
+        //we are not using icon in our project, you can omit icon option
         name: 'View',
         onClick: this.onView.bind(this),
         icon: 'visibility',
@@ -175,11 +176,13 @@ export class TableComponent implements OnInit {
   }
 
   onDelete(row: IUserData,ref:Table) {
-    console.log('On Delete', row);
-    console.log(ref);
+    // console.log('On Delete', row);
+    // console.log(ref);
+    //After API calling
     setTimeout(()=> {
       const rowIndex = this.data.findIndex(x => x.id === row.id);
       this.data.splice(rowIndex,1);
+      //update the table
       ref.reRenderTable();
     },500)
   }
