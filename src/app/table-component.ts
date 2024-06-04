@@ -77,26 +77,26 @@ export class TableComponent implements OnInit {
     dataClasses: ['text-center', 'action-column'],
     buttons: [
       {
-        label: 'View',
+        name: 'View',
         onClick: this.onView.bind(this),
         icon: 'visibility',
         access: this.canView.bind(this),
       },
       {
-        label: 'Edit',
+        name: 'Edit',
         onClick: this.onEdit.bind(this),
         icon: 'edit',
         access: this.canEdit.bind(this),
       },
       {
-        label: 'Delete',
+        name: 'Delete',
         onClick: this.onDelete.bind(this),
         icon: 'delete',
         access: this.canDelete.bind(this),
       },
       {
-        label: 'Archived/UnArchived',
-        labelTransForm: (row) => {
+        name: 'Archived/UnArchived',
+        nameTransForm: (row) => {
           return row.isArchived ? 'Unarchived' : 'Archived';
         },
         iconTransform: (row) => {
@@ -306,7 +306,7 @@ export class TableComponent implements OnInit {
     },0)
   }
 
-  onArcheivedView(event:MatSlideToggleChange) {
+  onArcheivedView() {
     this.applyFilter();
   }
 }
