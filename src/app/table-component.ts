@@ -94,18 +94,19 @@ export class TableComponent implements OnInit {
         icon: 'delete',
         access: this.canDelete.bind(this),
       },
-      {
-        name: 'Archived/UnArchived',
-        nameTransForm: (row) => {
-          return row.isArchived ? 'Unarchived' : 'Archived';
-        },
-        iconTransform: (row) => {
-          return row.isArchived ? 'unarchive' : 'archive';
-        },
-        onClick: this.onToggleArchived.bind(this),
-        icon: 'archive',
-        access: this.canDelete.bind(this),
-      },
+      //this button will only show on repository page
+      // {
+      //   name: 'Archived/UnArchived',
+      //   nameTransForm: (row) => {
+      //     return row.isArchived ? 'Unarchived' : 'Archived';
+      //   },
+      //   iconTransform: (row) => {
+      //     return row.isArchived ? 'unarchive' : 'archive';
+      //   },
+      //   onClick: this.onToggleArchived.bind(this),
+      //   icon: 'archive',
+      //   access: this.canDelete.bind(this),
+      // },
     ],
   };
 
