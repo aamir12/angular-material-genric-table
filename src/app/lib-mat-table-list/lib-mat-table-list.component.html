@@ -5,8 +5,6 @@
     [id]="tableContainerId"
   >
     <table
-
-    (contentChanged) ="onContentRendered()"
       #table
       mat-table
       [dataSource]="dataSource"
@@ -14,15 +12,18 @@
       [matSortActive]="sortActive"
       [matSortDirection]="sortDirection"
     >
-      <ng-container matColumnDef="action" *ngIf="!!actionBtns" [sticky]="isActionSticky('start')" [stickyEnd]="isActionSticky('end')">
+      <ng-container
+        matColumnDef="action"
+        *ngIf="!!actionBtns"
+        [sticky]="isActionSticky('start')"
+        [stickyEnd]="isActionSticky('end')"
+      >
         <th
           mat-header-cell
           *matHeaderCellDef
           disabled="true"
           [ngStyle]="actionBtns.headerStyle ? actionBtns.headerStyle : {}"
-          [ngClass]="
-            actionBtns.headerClasses ? actionBtns.headerClasses : []
-          "
+          [ngClass]="actionBtns.headerClasses ? actionBtns.headerClasses : []"
         >
           Action
         </th>
@@ -30,9 +31,7 @@
           mat-cell
           *matCellDef="let row"
           [ngStyle]="actionBtns.dataStyle ? actionBtns.dataStyle : {}"
-          [ngClass]="
-            actionBtns.dataClasses ? actionBtns.dataClasses : []
-          "
+          [ngClass]="actionBtns.dataClasses ? actionBtns.dataClasses : []"
         >
           <button
             (click)="onOptionClick($event)"
@@ -50,17 +49,11 @@
             <ng-container *ngFor="let action of actionBtns.buttons">
               <button
                 mat-menu-item
-                type="button"
                 *ngIf="action.access ? action.access(row) : true"
-                (click)="action.onClick(row,this)"
+                (click)="action.onClick(row)"
               >
-                <mat-icon *ngIf="action.icon || action.iconTransform">{{
-                  action.iconTransform ? action.iconTransform(row) : action.icon
-                }}</mat-icon>
-
-                <span>{{
-                  action.nameTransForm ? action.nameTransForm(row) : action.name
-                }}</span>
+                <mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon>
+                <span>{{ action.name }}</span>
               </button>
             </ng-container>
           </mat-menu>
@@ -101,21 +94,24 @@
           class="mat-cell text-center"
           [attr.colspan]="displayedColumns.length"
         >
-         {{ isLoading ? loadingLable : noDataFoundLable }} 
+          No data found
         </td>
       </tr>
     </table>
   </div>
 
+  <!-- *ngIf="isPageAble" -->
   <mat-paginator
     #paginator
     [ngClass]="paginationClasses"
-    [class.d-none]="dataSource && !dataSource.filteredData.length"
+    [class.d-none]="
+      !isPageAble || (dataSource && !dataSource.filteredData.length)
+    "
     [length]="data.length"
     [pageSize]="pageSize"
     [pageSizeOptions]="limitSizes"
-    (page)="onPageChange($event)"
     aria-label="Select page"
+    (page)="onPageChange($event)"
   >
   </mat-paginator>
 </div>
